@@ -8,7 +8,7 @@ const CheckoutPage = observer(() => {
   const { getProducts } = checkout;
 
   const handleSendData = () => {
-    SendData(tgApp.initDataUnsafe.user?.first_name ?? "");
+    SendData(tgApp.initDataUnsafe.user?.id.toString() ?? "");
   };
   return (
     <div className="relative grid grid-cols-[1fr_1fr] gap-2 p-4 pb-12 h-full">
