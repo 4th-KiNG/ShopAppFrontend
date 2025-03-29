@@ -5,26 +5,21 @@ import { tgApp } from "../../constants/api";
 
 const CheckoutPage = observer(() => {
   const { getProducts } = checkout;
+  tgApp.MainButton.setText("Оформить заказ").show();
 
   const handleSendData = () => {
     const data = JSON.stringify({
       productId: getProducts[0].id,
     });
     tgApp.sendData(data);
-    tgApp.close();
   };
+  tgApp.MainButton.onClick(handleSendData);
 
   return (
     <div className="relative grid grid-cols-[1fr_1fr] gap-2 p-4 pb-12 h-full">
       {getProducts.map((product) => (
         <CheckoutProduct {...product} key={product.id} />
       ))}
-      <button
-        className="fixed bottom-2 left-2 w-[calc(100%-16px)] py-2 bg-white box-border text-black rounded-md"
-        onClick={handleSendData}
-      >
-        Оформить заказ
-      </button>
     </div>
   );
 });

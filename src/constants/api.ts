@@ -8,4 +8,4 @@ export const Http = axios.create();
 export const tgApp = WebApp;
 
 tgApp.expand();
-tgApp.MainButton.setText("Открыть каталог").show();
+tgApp.MainButton.setText("Оформить заказ").show();
