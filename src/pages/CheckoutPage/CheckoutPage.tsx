@@ -1,16 +1,17 @@
 import { observer } from "mobx-react-lite";
 import checkout from "../../storage/checkout";
 import { CheckoutProduct } from "../../components";
-import { tgApp } from "../../constants/api";
+import { SendOfferData } from "../../api/productApi";
 
 const CheckoutPage = observer(() => {
   const { getProducts } = checkout;
 
   const handleSendData = () => {
-    const data = JSON.stringify({
-      productId: getProducts[0].id,
-    });
-    tgApp.sendData(data);
+    // const data = JSON.stringify({
+    //   productId: getProducts[0].id,
+    // });
+    // tgApp.sendData(data);
+    SendOfferData(getProducts[0].id);
   };
 
   return (
