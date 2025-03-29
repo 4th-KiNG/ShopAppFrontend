@@ -7,9 +7,11 @@ const CheckoutPage = observer(() => {
   const { getProducts } = checkout;
 
   const handleSendData = () => {
-    tgApp.sendData({
+    const data = JSON.stringify({
       productId: getProducts[0].id,
     });
+    console.log(data);
+    tgApp.sendData(data);
   };
 
   return (
