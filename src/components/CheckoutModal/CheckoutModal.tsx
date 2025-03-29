@@ -4,9 +4,11 @@ import checkout from "../../storage/checkout";
 const CheckoutModal = () => {
   const { getProducts } = checkout;
   const handleSendData = () => {
-    tgApp.sendData({
-      productId: getProducts[0].id,
-    });
+    tgApp.sendData(
+      JSON.stringify({
+        productId: getProducts[0].id,
+      })
+    );
   };
 
   return (
