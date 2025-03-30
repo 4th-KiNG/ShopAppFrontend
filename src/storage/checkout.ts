@@ -17,6 +17,10 @@ class CheckoutStorage {
     this.products = this.products.filter((product) => product.id !== productId);
   }
 
+  cleanProducts() {
+    this.products = [];
+  }
+
   get getProducts() {
     return toJS(this.products);
   }

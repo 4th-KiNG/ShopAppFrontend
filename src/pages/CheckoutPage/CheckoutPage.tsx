@@ -8,12 +8,16 @@ const CheckoutPage = observer(() => {
   const { getProducts } = checkout;
 
   const handleSendData = () => {
-    const username = tgApp.initDataUnsafe.user?.username ?? "";
-    const userId = tgApp.initDataUnsafe.user?.id.toString() ?? "";
-    const productNames = getProducts.map((product) => product.name);
-    let totalPrice = 0;
-    getProducts.forEach((product) => (totalPrice += product.price));
-    SendData(userId, username, productNames, totalPrice);
+    if (getProducts.length > 0) {
+      const username = tgApp.initDataUnsafe.user?.username ?? "";
+      const userId = tgApp.initDataUnsafe.user?.id.toString() ?? "";
+      const productNames = getProducts.map((product) => product.name);
+      let totalPrice = 0;
+      getProducts.forEach((product) => (totalPrice += product.price));
+      SendData(userId, username, productNames, totalPrice).then(() =>
+        checkout.cleanProducts()
+      );
+    }
   };
   return (
     <div className="relative grid grid-cols-[1fr_1fr] gap-2 p-4 pb-12 h-full">
